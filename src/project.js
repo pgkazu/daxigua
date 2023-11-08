@@ -1607,6 +1607,7 @@ window.__require = function e(t, n, o) {
           var t = this;
           i.default.playerTouch && null != a.default.Instance.targetFruit && 1 == this.touchNum && (this.touchNum = 0, a.default.Instance.targetFruit.getComponent(cc.PhysicsCircleCollider).radius = a.default.Instance.targetFruit.height / 2, a.default.Instance.targetFruit.getComponent(cc.PhysicsCircleCollider).apply(), a.default.Instance.targetFruit.getComponent(cc.RigidBody).active = true,a.default.Instance.targetFruit.getComponent(cc.RigidBody).type = cc.RigidBodyType.Dynamic, a.default.Instance.targetFruit.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, -800), a.default.Instance.targetFruit = null,
             // 生成指定水果
+            /*
             this.scheduleOnce(function () {
               if (setFruits) {
                 let {startFruits} =  setFruits;
@@ -1625,6 +1626,22 @@ window.__require = function e(t, n, o) {
                     t.createFruitCount++))
               }
             }, .5))
+            */
+            this.scheduleOnce(function () {
+              if (setFruits) {
+                if (i.default.GameUpdateCtrl) {
+                  const randomFruit = setFruits.randomFunction();
+                  a.default.Instance.createOneFruit(randomFruit);
+                  t.createFruitCount++;
+                }
+              } else {
+                if (i.default.GameUpdateCtrl) {
+                  const randomFruit = setFruits.randomFunction();
+                  a.default.Instance.createOneFruit(randomFruit);
+                  t.createFruitCount++;
+                }
+              }
+            }, 0.5))
         }, t.prototype.closeTouch = function () {
           this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this), this.node.off(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this), this.node.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this), this.node.off(cc.Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this)
         }, t.prototype.addScore = function () {
